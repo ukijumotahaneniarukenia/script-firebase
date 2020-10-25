@@ -13,7 +13,7 @@ let resultObject = []
 
 // 雰囲気こんなかんじ
 // 配列
-function NNN(targetCollectionNameList, prevDocument, resultObject, currentVisitCount) {
+function NNN(targetCollectionNameList, prevCollectionName, prevDocument, resultObject, currentVisitCount) {
   if(targetCollectionNameList.length === currentVisitCount){
     return
   }
@@ -40,10 +40,10 @@ function NNN(targetCollectionNameList, prevDocument, resultObject, currentVisitC
     targetQuerySnapshot.forEach((targetDocumnet) => {
       const mainDocumentId = targetDocumnet.id
       const mainCollectionData = targetDocumnet.data()
-       // 対象コレクション名をキーにして取得できた配列にpushするように修正
+       // 対象コレクション名をキーにして取得できた配列にpushするように修正 prevCollectionName
       resultObject = Object.assign(resultObject, JSON.parse({"DocumentId":JSON.stringify(mainDocumentId)}))
       resultObject = Object.assign(resultObject, JSON.parse({"DocumentData":JSON.stringify(mainCollectionData)}))
-      return NNN(targetCollectionNameList, targetCollection.doc(mainDocumentId), resultObject, currentVisitCount)
+      return NNN(targetCollectionNameList, targetCollectionName, targetCollection.doc(mainDocumentId), resultObject, currentVisitCount)
     });
   });
 }
