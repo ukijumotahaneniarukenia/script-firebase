@@ -16,23 +16,27 @@ function NNN(targetCollectionNameList, prevDocument, resultObject, currentVisitC
   if(targetCollectionNameList.length === currentVisitCount){
     return
   }
-  const mainCollection = db.collection(targetCollectionNameList[currentVisitCount])
+  let targetCollection
+  if (currentVisitCount === 0) {
+    // 初回
+    targetCollection = db.collection(targetCollectionNameList[currentVisitCount])
+  } else {
+    // ２回目以降
+    targetCollection = prevDocument.collection(targetCollectionNameList[currentVisitCount])
+  }
   currentVisitCount++
-  mainCollection.get().then((mainQuerySnapshot) => {
-    if(mainQuerySnapshot.docs.length <= 0){
-      // such no maincollection
+  targetCollection.get().then((targetQuerySnapshot) => {
+    if(targetQuerySnapshot.docs.length <= 0){
       console.log('such no targetcollection')
       resultObject = Object.assign(resultObject, {})
       return
     }
-    mainQuerySnapshot.forEach((mainDocumnet) => {
-      const mainDocumentId = mainDocumnet.id
-      const mainCollectionData = mainDocumnet.data()
-      console.log(mainDocumentId)
-      console.log(JSON.stringify(mainCollectionData))
-      console.log(mainCollection.doc(mainDocumentId))
-      resultObject = Object.assign(resultObject, {})
-      return NNN(targetCollectionNameList, mainCollection.doc(mainDocumentId), resultObject, currentVisitCount)
+    targetQuerySnapshot.forEach((targetDocumnet) => {
+      const mainDocumentId = targetDocumnet.id
+      const mainCollectionData = targetDocumnet.data()
+      resultObject = Object.assign(resultObject, JSON.parse({"DocumentId":JSON.stringify(mainDocumentId)}))
+      resultObject = Object.assign(resultObject, JSON.parse({"DocumentData":JSON.stringify(mainCollectionData)}))
+      return NNN(targetCollectionNameList, targetCollection.doc(mainDocumentId), resultObject, currentVisitCount)
     });
   });
 }
