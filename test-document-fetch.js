@@ -27,7 +27,7 @@ function NNN(targetCollectionNameList, prevDocument, resultObject, currentVisitC
   } else {
     // ２回目以降
     targetCollectionName = targetCollectionNameList[currentVisitCount]
-    targetCollection = db.collection(targetCollectionName)
+    targetCollection = prevDocument.collection(targetCollectionName)
     resultObject = Object.assign(resultObject, { targetCollectionName : [] }) // ここで詰まりそう
   }
   currentVisitCount++
