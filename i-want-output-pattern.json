@@ -1,0 +1,84 @@
+{
+  "Main": [
+    {
+      "DocumentId": "8MUgCqt4qrofKPQv1n1S",
+      "DocumentData": {
+        "eventExpireDateTime": {
+          "seconds": 1603983600,
+          "nanoseconds": 0
+        },
+        "eventName": "とげイベント",
+        "eventPassword": "Togetoge",
+        "eventStartDateTime": {
+          "seconds": 1603292400,
+          "nanoseconds": 0
+        },
+        "Sub": [
+          {
+            "DocumentId": "SwfcicnlrCqSRVS2JKIu",
+            "DocumentData": {
+              "entryDateTime": {
+                "seconds": 1603378800,
+                "nanoseconds": 0
+              },
+              "uid": "dhtrdrtdh"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "DocumentId": "WPXZzvLwMQ1LMdz2YIot",
+      "DocumentData": {
+        "eventExpireDateTime": {
+          "seconds": 1604070000,
+          "nanoseconds": 0
+        },
+        "eventName": "ほげほげイベント",
+        "eventPassword": "hogeHoGe",
+        "eventStartDateTime": {
+          "seconds": 1603638000,
+          "nanoseconds": 0
+        }
+      },
+      "Sub": [
+        {
+          "DocumentId": "2fgHEU8TeGwaSkwNHgtm",
+          "DocumentData": {
+            "entryDateTime": {
+              "seconds": 1603897200,
+              "nanoseconds": 0
+            },
+            "uid": "fsdhjklfsdlkjah"
+          }
+        },
+        {
+          "DocumentId": "6dr0zZAkp4xoX2mszQgr",
+          "DocumentData": {
+            "entryDateTime": {
+              "seconds": 1603983600,
+              "nanoseconds": 0
+            },
+            "uid": "fgdhgewrwer"
+          }
+        }
+      ]
+    },
+    {
+      "DocumentId": "aDjUwh0vAJscKY6RqDWH",
+      "DocumentData": {
+        "eventExpireDateTime": {
+          "seconds": 1604070000,
+          "nanoseconds": 0
+        },
+        "eventName": "もげイベント",
+        "eventPassword": "Mogemoge",
+        "eventStartDateTime": {
+          "seconds": 1603897200,
+          "nanoseconds": 0
+        }
+      },
+      "Sub": []
+    }
+  ]
+}

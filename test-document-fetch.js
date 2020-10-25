@@ -6,28 +6,28 @@ firebase.initializeApp(firebaseConfig)
 
 const db = firebase.firestore();
 
-const parentCollection = db.collection("events")
-parentCollection.get().then((parentQuerySnapshot) => {
-  if(parentQuerySnapshot.docs.length <= 0){
+const mainCollection = db.collection("events")
+mainCollection.get().then((mainQuerySnapshot) => {
+  if(mainQuerySnapshot.docs.length <= 0){
     // such no maincollection
     console.log('such no maincollection')
   }
-  parentQuerySnapshot.forEach((parentDocumnet) => {
-    const parentDocumentId = parentDocumnet.id
-    const parentCollectionData = parentDocumnet.data()
-    console.log(parentDocumentId)
-    console.log(parentCollectionData)
-    const childCollection = parentCollection.doc(parentDocumentId).collection("eventUser")
-    childCollection.get().then((childQuerySnapshot) => {
-      if(childQuerySnapshot.docs.length <= 0){
+  mainQuerySnapshot.forEach((mainDocumnet) => {
+    const mainDocumentId = mainDocumnet.id
+    const mainCollectionData = mainDocumnet.data()
+    console.log(mainDocumentId)
+    console.log(JSON.stringify(mainCollectionData))
+    const subCollection = mainCollection.doc(mainDocumentId).collection("eventUser")
+    subCollection.get().then((subQuerySnapshot) => {
+      if(subQuerySnapshot.docs.length <= 0){
         // such no subcollection
         console.log('such no subcollection')
       }
-      childQuerySnapshot.forEach((childDocument) => {
-        const childDocumentId = childDocument.id
-        const childCollectionData = childDocument.data()
-        console.log(childDocumentId)
-        console.log(childCollectionData)
+      subQuerySnapshot.forEach((subDocument) => {
+        const subDocumentId = subDocument.id
+        const subCollectionData = subDocument.data()
+        console.log(subDocumentId)
+        console.log(JSON.stringify(subCollectionData))
       })
     })
   });
